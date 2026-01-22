@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: nodejs-pipeline-run
+spec:
+  pipelineRef:
+    name: nodejs-pipeline
+
+  params:
+    - name: repo-url
+      value: https://github.com/your-username/your-repo
+    - name: revision
+      value: main
+
+  workspaces:
+    - name: shared-workspace
+      emptyDir: {}
